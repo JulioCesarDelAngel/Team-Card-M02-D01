@@ -5,8 +5,8 @@ const listadoEmp = [];
 const datosGte = [
     {
         type: 'input',
-        name:'nomGte',
-        message:'¿Nombre del Gerente?',
+        name: 'nomGte',
+        message: '¿Nombre del Gerente?',
         validate: dataInput => {
             if (dataInput !=="")
             {
@@ -17,13 +17,55 @@ const datosGte = [
             }
         }        
     },
+    {
+        type: 'input',
+        name: 'IdGte',
+        message: '¿Id del gerente?',
+        validate: dataInput => {
+            if (dataInput !=="")
+            {
+                return true;
+            }
+            else{
+                return 'Capture un id valido';
+            }
+        }        
+    },
+    {
+        type: 'input',
+        name: 'emailGte',
+        message: '¿e-mail del gerente?',
+        validate: dataInput => {
+            if (dataInput !=="")
+            {
+                return true;
+            }
+            else{
+                return 'Capture un id valido';
+            }
+        }        
+    },
+    {
+        type: 'input',
+        name: 'numOficina',
+        message: '¿no. de oficina del gerente?',
+        validate: dataInput => {
+            if (dataInput !=="")
+            {                
+                return true;
+            }
+            else{
+                return 'Capture un numero valido';
+            }
+        }        
+    }    
 ]
 
 const datosIng = [
     {
         type: 'input',
-        name:'nomIng',
-        message:'¿Nombre del Ingeniero?',
+        name: 'nomIng',
+        message: '¿Nombre del Ingeniero?',
         validate: dataInput => {
             if (dataInput !=="")
             {
@@ -34,6 +76,48 @@ const datosIng = [
             }
         }        
     },
+    {
+        type: 'input',
+        name:'IdIng',
+        message:'¿Id del ingeniero?',
+        validate: dataInput => {
+            if (dataInput !=="")
+            {
+                return true;
+            }
+            else{
+                return 'Capture un id valido';
+            }
+        }        
+    },
+    {
+        type: 'input',
+        name:'emailIng',
+        message:'¿e-mail del ingeniero?',
+        validate: dataInput => {
+            if (dataInput !=="")
+            {
+                return true;
+            }
+            else{
+                return 'Capture un email valido';
+            }
+        }        
+    },
+    {
+        type:'input',
+        name:'gitIng',
+        message:'¿Usuario de GitHub?',
+        validate: dataInput => {
+            if (dataInput !=="")
+            {
+                return true;                
+            }
+            else{
+                return 'Capture un usuario valido';
+            }
+        }        
+    }   
 ]
 
 const datosPas = [
@@ -51,6 +135,49 @@ const datosPas = [
             }
         }        
     },
+    {
+        type: 'input',
+        name:'IdIng',
+        message:'¿Id del Pasante?',
+        validate: dataInput => {
+            if (dataInput !=="")
+            {
+                return true;
+            }
+            else{
+                return 'Capture un id valido';
+            }
+        }        
+    },
+    {
+        type: 'input',
+        name:'emailIng',
+        message:'¿e-mail del pasante?',
+        validate: dataInput => {
+            if (dataInput !=="")
+            {
+                return true;
+            }
+            else{
+                return 'Capture un email valido';
+            }
+        }        
+    },
+    {
+        type: 'input',
+        name:'escPas',
+        message:'Escuela del pasante?',
+        validate: dataInput => {
+            if (dataInput !=="")
+            {
+                console.log(dataInput)
+                return true;
+            }
+            else{
+                return 'Capture un dato valido';
+            }
+        }        
+    }    
 ]
 
 
