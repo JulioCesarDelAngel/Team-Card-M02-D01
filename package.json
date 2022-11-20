@@ -2,7 +2,8 @@
   "name": "team-card-m02-d01",
   "version": "1.0.0",
   "description": "Generador de tarjetas de equipos de trabajo",
-  "main": "index.js",
+  "exports": "./index.js",
+  "type":"module",
   "directories": {
     "lib": "lib"
   },
@@ -19,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/JulioCesarDelAngel/Team-Card-M02-D01/issues"
   },
-  "homepage": "https://github.com/JulioCesarDelAngel/Team-Card-M02-D01#readme"
+  "homepage": "https://github.com/JulioCesarDelAngel/Team-Card-M02-D01#readme",
+  "dependencies": {
+    "inquirer": "^9.1.4"
+  }
 }
