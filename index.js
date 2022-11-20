@@ -1,4 +1,8 @@
 import inquirer from "inquirer";
+import Manager from './lib/Manager.js';
+import Engineer from './lib/Engineer.js';
+import Intern from './lib/Intern.js';
+import fs from 'node:fs';
 
 const listadoEmp = [];
 
@@ -137,7 +141,7 @@ const datosPas = [
     },
     {
         type: 'input',
-        name:'IdIng',
+        name:'idPas',
         message:'¿Id del Pasante?',
         validate: dataInput => {
             if (dataInput !=="")
@@ -151,7 +155,7 @@ const datosPas = [
     },
     {
         type: 'input',
-        name:'emailIng',
+        name:'emailPas',
         message:'¿e-mail del pasante?',
         validate: dataInput => {
             if (dataInput !=="")
@@ -184,7 +188,8 @@ const datosPas = [
 function generarGte(){
     inquirer.prompt(datosGte).then(datos =>{
         console.log('datos gte',datos);
-        listadoEmp.push(datos);
+        const gerente = new Manager(datos.nomGte, datos.IdGte, datos.emailGte,'Gerente',datos.numOficina);
+        listadoEmp.push(gerente);
         menu();
     })
 }
@@ -192,7 +197,8 @@ function generarGte(){
 function generarIng(){
     inquirer.prompt(datosIng).then(datos=>{
         console.log('datos ing',datos);
-        listadoEmp.push(datos);
+        const ingeniero = new Engineer(datos.nomIng, datos.IdIng, datos.emailIng, 'Ingeniero', datos.gitIng);
+        listadoEmp.push(ingeniero);
         menu();
     })
 }
@@ -200,7 +206,8 @@ function generarIng(){
 function generarPas(){
     inquirer.prompt(datosPas).then(datos=>{
         console.log('datos ing',datos);
-        listadoEmp.push(datos);
+        const interno = new Intern(datos.nomPas, datos.idPas, datos.emailPas, 'Interno', datos.escPas );
+        listadoEmp.push(interno);
         menu();
     })
 }
@@ -230,7 +237,11 @@ function menu(){
                 generarPas();
                 break;
             default:
-                console.log('terminar listado:' ,listadoEmp);
+                const dataList = JSON.stringify(listadoEmp);
+                fs.writeFileSync('./dist/empleados.json',dataList, (error)=>{
+                    err? console.log('Error al guardar el archivo.'): console.log('Archivo de datos generado.');
+                })
+                //console.log('Listado guardado:' ,listadoEmp);
         }; 
     });
 }
