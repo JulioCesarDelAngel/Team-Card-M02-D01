@@ -236,6 +236,7 @@ function menu(){
 }
 
 function init() {
+
     inquirer.prompt(
     {
         type: 'confirm',
