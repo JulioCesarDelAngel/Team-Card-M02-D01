@@ -221,7 +221,7 @@ function generarArchivo(){
                 break;
             case 'Ingeniero':
                 icon = 'fas fa-glasses';
-                otrosDatos = `<p class="card-text">GitHub: <a href="https://github.com/${emp.getGitHub()}">${emp.getGitHub()} </a></p>`;
+                otrosDatos = `<p class="card-text">GitHub: <a href="https://github.com/${emp.getGitHub()}" target="_blank">${emp.getGitHub()} </a></p>`;
                 break;
             case 'Interno':
                 icon = 'fas fa-user-graduate';
@@ -234,7 +234,7 @@ function generarArchivo(){
             <div class="card-header text-left">${emp.getName()}</div>
             <h7 class="card-subtitle"><i class="${icon}"></i> ${emp.getRole()}</h7>
             <div class="card-body">
-                <p class="card-text">ID :${emp.getId()}.</p>
+                <p class="card-text">ID :${emp.getId()}</p>
                 <p class="card-text">Email : <a href="mailto:${emp.getEmail()}">${emp.getEmail()} </a></p>
                 ${otrosDatos}
             </div>
