@@ -174,7 +174,6 @@ const datosPas = [
         validate: dataInput => {
             if (dataInput !=="")
             {
-                console.log(dataInput)
                 return true;
             }
             else{
@@ -186,8 +185,7 @@ const datosPas = [
 
 
 function generarGte(){
-    inquirer.prompt(datosGte).then(datos =>{
-        console.log('datos gte',datos);
+    inquirer.prompt(datosGte).then(datos =>{        
         const gerente = new Manager(datos.nomGte, datos.IdGte, datos.emailGte,'Gerente',datos.numOficina);
         listadoEmp.push(gerente);
         menu();
@@ -196,7 +194,6 @@ function generarGte(){
 
 function generarIng(){
     inquirer.prompt(datosIng).then(datos=>{
-        console.log('datos ing',datos);
         const ingeniero = new Engineer(datos.nomIng, datos.IdIng, datos.emailIng, 'Ingeniero', datos.gitIng);
         listadoEmp.push(ingeniero);
         menu();
@@ -205,11 +202,58 @@ function generarIng(){
 
 function generarPas(){
     inquirer.prompt(datosPas).then(datos=>{
-        console.log('datos ing',datos);
         const interno = new Intern(datos.nomPas, datos.idPas, datos.emailPas, 'Interno', datos.escPas );
         listadoEmp.push(interno);
         menu();
     })
+}
+
+function generarArchivo(){
+    var listado='';
+    var icon = '';
+    var otrosDatos = '';
+    
+    listadoEmp.forEach(function(emp){
+        switch (emp.getRole()){
+            case 'Gerente':
+                icon = 'fas fa-mug-hot';
+                otrosDatos = `<p class="card-text">No. de Oficina: ${emp.getOfficeNumber()}</p>`;
+                break;
+            case 'Ingeniero':
+                icon = 'fas fa-glasses';
+                otrosDatos = `<p class="card-text">GitHub: <a href="https://github.com/${emp.getGitHub()}">${emp.getGitHub()} </a></p>`;
+                break;
+            case 'Interno':
+                icon = 'fas fa-user-graduate';
+                otrosDatos = `<p class="card-text">Universidad: ${emp.getSchool()}</p>`;
+                break;
+        }
+
+        const card = `
+        <div class="card text-white  mb-3" style="max-width: 18rem;">
+            <div class="card-header text-left">${emp.getName()}</div>
+            <h7 class="card-subtitle"><i class="${icon}"></i> ${emp.getRole()}</h7>
+            <div class="card-body">
+                <p class="card-text">ID :${emp.getId()}.</p>
+                <p class="card-text">Email : <a href="mailto:${emp.getEmail()}">${emp.getEmail()} </a></p>
+                ${otrosDatos}
+            </div>
+        </div>            
+        `
+        listado += card;
+    })
+
+    fs.readFile('./src/plantilla.html', 'utf8', function(err, data){
+        
+        var tarjetas = data.replace('__TARJETAS__', listado);
+
+        fs.writeFile('./dist/Tarjetas.html', tarjetas, function(){ 
+            console.log('ARCHIVO GENERADO');
+
+        });
+        
+    });
+
 }
 
 function menu(){
@@ -229,19 +273,23 @@ function menu(){
     ]).then(answer => {
         switch(answer.nivel){
             case "Ingeniero":
-                console.log('Ingeniero');
+                //console.log('Ingeniero');
                 generarIng();
                 break;
             case "Pasante":
-                console.log('Pasante');
+                //console.log('Pasante');
                 generarPas();
                 break;
             default:
+                /*Test
                 const dataList = JSON.stringify(listadoEmp);
                 fs.writeFileSync('./dist/empleados.json',dataList, (error)=>{
                     err? console.log('Error al guardar el archivo.'): console.log('Archivo de datos generado.');
                 })
-                //console.log('Listado guardado:' ,listadoEmp);
+                */
+                /**GenerarHtml */
+                generarArchivo();
+                
         }; 
     });
 }
@@ -258,7 +306,6 @@ function init() {
     ).then((respuesta) => {
 
         if (respuesta.iniciar) {
-            console.log('iniciar')            
             generarGte();
         } 
         else {
