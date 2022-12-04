@@ -23,9 +23,14 @@
 ![Visualización de la aplicación](https://github.com/JulioCesarDelAngel/Team-Card-M02-D01/blob/main/assets/images/BannerTeamCard.png)
 
 
+## [Enlace al video de funcionalidad](https://drive.google.com/file/d/1NHauX1MKikF6hFsvAmk6_m90Xuinv7mx/view?usp=sharing "Enlace al video de funcionalidad")
+
+
 ## Referencias
 
 - [Inquirer](https://www.npmjs.com/package/inquirer)
 - [Node](https://www.npmjs.com/package/node)
 - [Babel](https://babeljs.io/)
+
+
 

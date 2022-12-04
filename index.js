@@ -39,14 +39,15 @@ const datosGte = [
         type: 'input',
         name: 'emailGte',
         message: '¿e-mail del gerente?',
-        validate: dataInput => {
-            if (dataInput !=="")
-            {
+        validate: function (emailGte){
+            var valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailGte)
+  
+            if (valid) {
                 return true;
-            }
-            else{
-                return 'Capture un id valido';
-            }
+            } else {
+                console.log(" Capture un email válido.")
+                return false;
+            }            
         }        
     },
     {
