@@ -99,15 +99,17 @@ const datosIng = [
         type: 'input',
         name:'emailIng',
         message:'¿e-mail del ingeniero?',
-        validate: dataInput => {
-            if (dataInput !=="")
-            {
+        validate: function (emailIng){
+            var valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailIng)
+  
+            if (valid) {
                 return true;
-            }
-            else{
-                return 'Capture un email valido';
-            }
-        }        
+            } else {
+                console.log(" Capture un email válido.")
+                return false;
+            }            
+        } 
+        
     },
     {
         type:'input',
@@ -158,15 +160,17 @@ const datosPas = [
         type: 'input',
         name:'emailPas',
         message:'¿e-mail del pasante?',
-        validate: dataInput => {
-            if (dataInput !=="")
-            {
+        validate: function (emailPas){
+            var valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailPas)
+  
+            if (valid) {
                 return true;
-            }
-            else{
-                return 'Capture un email valido';
-            }
-        }        
+            } else {
+                console.log(" Capture un email válido.")
+                return false;
+            }            
+        }
+
     },
     {
         type: 'input',
